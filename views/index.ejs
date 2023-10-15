@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title><link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"> <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+  <div id="nav">
+    <div id="nav1">
+      <img src="../images/icons8-vs-code-48.png" alt="">
+      <h4>File</h4>
+      <h4>Edit</h4>
+      <h4>Selection</h4>
+      <h4>View</h4>
+      <h4>Go</h4>
+      <h4>Run</h4>
+      <i class="ri-more-line"></i>
+    </div>
+    <div id="nav2">
+      <i class="ri-arrow-left-line"></i>
+      <i class="ri-arrow-right-line"></i>
+       <input type="text" placeholder="Vscode">
+    </div>
+  </div>
+  <div id="main">
+    <div id="overlay">
+    <div class="rename">
+      <h3>Rename</h3>
+      <form id="changeform" action="/editfile" method="post">
+        <input id="editfile" type="text" name="filename" >
+        <input id="editbtn" type="submit" value="Change">
+      </form>
+    </div>
+    </div>
+  
+    <div id="left">
+      <div id="ll">
+        <!-- <div id="licons">
+          <i class="ri-file-copy-line"></i>
+          <i class="ri-search-line"></i>
+          <i class="ri-play-line"></i>
+          <i class="ri-layout-grid-line"></i>
+        </div> -->
+      </div>
+      <div id="lr">
+        
+        <div id="folder">
+          <h3><i class="ri-arrow-down-s-line"></i>N16</h3>
+          <div id="icons">
+            <i id="fileicon" class="ri-file-close-line"></i>
+            <i id="folicon" class="ri-folder-add-line"></i>
+            <a href="/"><i class="ri-loop-left-line"></i></a>
+            <i class="ri-file-copy-line"></i>
+          </div>
+        </div>
+        <div class="fileform">
+          <form action="/filecreate">
+            <input type="text" name="filename">
+          </form>
+        </div>
+        <div class="folform">
+          <form action="/folcreate">
+            <input type="text" name="folname">
+          </form>
+        </div>
+        
+        <div id="files">
+         <% data.forEach(function(file){ %>
+            <div class="file">
+              <h4>
+                <%    if(file.isDirectory()){ %>
+                  <i class="ri-folder-2-line"></i>
+            <%  }else{ %>
+                <i class="ri-file-3-line"></i>
+                <%  } %>
+             <%= file.name %></h4>
+              <div class="ficons">
+                <i id="edit" data-val="<%= file.name %>" class="ri-pencil-line"></i>
+                <%    if(file.isDirectory()){ %>
+               <a href="/delete/folder/<%= file.name %>"> <i class="ri-delete-bin-line"></i></a>
+
+            <%  }else{ %>
+               <a href="/delete/file/<%= file.name %>"> <i class="ri-delete-bin-line"></i></a>
+                
+                <%  } %>
+              </div> 
+             
+                </div>
+                <%   }) %>
+         
+              
+               
+                  </div>
+                      </div>
+      </div>
+       
+     
+      <div id="right">
+        <small>Nothing to show</small>
+      </div>
+    
+  </div>
+   
+  <script src="../javascripts/script.js"></script>
+</body>
+</html>
